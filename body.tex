@@ -54,34 +54,34 @@ Similar to the Exposure Log, where human comments and context are added to gener
 The Nightly Digest augments these summit-based data sources with almanac data from the python package Astropy and simulated survey scheduling data from the observatory system performance team.
 
 \begin{table}[ht]
-\caption{Summary of heterogeneous data sources queried by the Nightly Digest.} 
+\caption{Summary of heterogeneous data sources queried by the Nightly Digest.}
 \label{tab:data_sources}
-\begin{center}       
-\begin{tabular}{|l|l|l|l|}
+\begin{center} 
+\begin{tabular}{|p{0.22\textwidth}|p{0.18\textwidth}|p{0.18\textwidth}|p{0.32\textwidth}|}
 \hline
 \rule[-1ex]{0pt}{3.5ex} \textbf{Data Source} & \textbf{Ingestion Method} & \textbf{Data Type} & \textbf{Primary Operational Purpose} \\
 \hline
-\rule[-1ex]{0pt}{3.5ex} EFD (InfluxDB) & InfluxQL & Time-Series & Control System tracking and telemetry \\
+\rule[-1ex]{0pt}{3.5ex} EFD (InfluxDB) & InfluxQL & Time-Series & Control System telemetry \\
 \hline
-\rule[-1ex]{0pt}{3.5ex} ConsDB (PostgreSQL) & Database Query & Per-Exposure & Initial scientific metrics and metadata \\
+\rule[-1ex]{0pt}{3.5ex} ConsDB (PostgreSQL) & Database Query & Per-Exposure & Initial scientific metadata \\
 \hline
-\rule[-1ex]{0pt}{3.5ex} Narrative/Night/Exposure Log & Microservices APIs & Natural Language/Text & Qualitative shift events and summaries \\
+\rule[-1ex]{0pt}{3.5ex} Narrative / Night / Exposure Log & Microservices APIs & Natural Language / Text & Qualitative summaries \\
 \hline
 \rule[-1ex]{0pt}{3.5ex} Jira / Zephyr Scale & API Endpoint & Issue Tracking & Fault tracking and explicit test steps \\
-\hline 
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
 \section{The Nightly Digest Layout of Summary Metrics}
 
-The main page of the Nightly Digest serves as a digest: a condensed and organized summary through components (applets) to communicate an overall understanding of how the previous observation night progressed. The Nightly Digest also allows users the flexibility to visualize metrics covering any date range in the past. The sidebar offers users control to choose which telescope’s data to focus on (Simonyi/AuxTel), what observation day (dayobs) range to request data for, and how many nights of data. The sidebar also includes a navigation menu to further detailed pages covered in section ~\ref{sec:addpages}.
+The main page of the Nightly Digest serves as a digest: a condensed and organized summary divided into components (applets) to communicate an overall understanding of how the previous observation night progressed. The Nightly Digest also allows users the flexibility to visualize metrics covering any date range in the past. The sidebar offers users control to choose which telescope’s data to focus on (Simonyi/AuxTel), what observation day (dayobs) range to request data for, and how many nights of data. The sidebar also includes a navigation menu to further detailed pages covered in section ~\ref{sec:addpages}.
 
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{cc} %% tabular useful for creating an array of images 
-    \includegraphics[height=15cm]{images/sidebar-calendar.png} &
-    \includegraphics[height=15cm]{images/sidebar.png} 
+    \includegraphics[height=12cm]{images/sidebar-calendar.png} &
+    \includegraphics[height=12cm]{images/sidebar.png} 
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -93,7 +93,7 @@ The Nightly Digest Sidebar contains selectable menus for the telescope, night, a
 The main summary page includes summary cards and more detailed applets to answer core logging questions given the requested observation day range;
 \begin{enumerate}
 \item\textbf{Volume} - How many exposures were taken during the time frame?
-\item\textbf{Quality/Efficiency} - To what extent did the atmospheric conditions and system performance meet the observatory’s requirements?
+\item\textbf{Performance} - To what extent did the atmospheric conditions and system performance meet the observatory’s efficiency and quality requirements?
 \item\textbf{Context} - What were the Observing Specialists’ qualitative observations of the night?
 \item\textbf{Interruptions} - Where did the system fail, and what was the root cause of the resulting downtime?
 \end{enumerate}
@@ -105,7 +105,7 @@ Additional pages build upon the summary page by combining data from multiple app
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=11cm]{images/nightlydigest-full-page.png}
+   \includegraphics[height=11cm]{images/nightly-digest-full-page-better.png}
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -210,7 +210,7 @@ The Exposure Breakdown applet displays a bar chart of exposure data from ConsDB 
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=4cm]{images/observing-conditions-breakdown.png}
+   \includegraphics[height=5cm]{images/observing-conditions-breakdown.png}
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -277,13 +277,13 @@ Time Accounting at the observatory is improving and we are updating our visualiz
 
 \subsubsection{Visit Map}
 
-The Visit Map applet shows an interactive planispheric projection of a full observation day’s visits\footnote[1]{In our application and language we use ‘visit’ and ‘exposure’ to refer to the same piece of data. Rubin Observatory once considered multiple shorter exposures to compose one visit, but currently they share a one to one relationship.}. We get this RA and Dec data from ConsDB for each exposure. This data is augmented with almanac data to display environmental information relative to visit locations. The user can scroll this display over many nights adjacent to the currently selected observation day or range to see the pattern of where the observatory is exposing on the sky. This applet communicates what type of activities the summit is performing, engineering tests could look quite different than LSST-like observations, while survey-like activities will sweep across an area filling it in. The Visit Map is highly detailed, including markers for the moon, sun, ecliptic, plane of the milky way and other labels. From this applet, users learn if their area of interest was exposed, and they can understand further context including how the exposures shown in other applets was distributed across the sky for that period. This data visualization is expanded upon in a Visit Map page and is a result of our inspiration from and collaboration with the survey scheduling team who has been a great help in our development and integration of this plot \cite{RTN-016}.
+The Visit Map applet shows an interactive planispheric projection of a full observation day’s visits\footnote[1]{We use ‘visit’ and ‘exposure’ to refer to the same piece of data. Rubin Observatory once considered multiple shorter exposures to compose one visit, but currently they share a one to one relationship.}. We get this RA and Dec data from ConsDB for each exposure. This data is augmented with almanac data to display environmental information relative to visit locations. The user can scroll this display over many nights adjacent to the currently selected observation day or range to see the pattern of where the observatory is exposing on the sky. This applet communicates what type of activities the summit is performing, engineering tests could look quite different than LSST-like observations, while survey-like activities will sweep across an area filling it in. The Visit Map is highly detailed, including markers for the moon, sun, ecliptic, plane of the milky way and other labels. From this applet, users learn if their area of interest was exposed, and they can understand further context including how the exposures shown in other applets was distributed across the sky for that period. This data visualization is expanded upon in a Visit Map page and is a result of our inspiration from and collaboration with the survey scheduling team who has been a great help in our development and integration of this plot \cite{RTN-016}.
 
 
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{images/visit-map-applet.png}
+   \includegraphics[height=8cm]{images/visit-map-applet.png}
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -294,7 +294,7 @@ The Visit Map applet displays a planispheric projection of the visits taken with
 
 
 
-\section{Additional Pages -- "Multi Night analysis and supplementary interfaces"}
+\section{Supporting Pages}
 \label{sec:addpages}
 
 While the Nightly Digest’s main summary page was our initial focus, we have found that additional pages support our use cases of debugging and adding context. These pages tie into our core questions and expand upon our summary page applets while adding complexity and depth to the information provided.
@@ -335,7 +335,7 @@ The Plots page expands on the Observing Conditions applet to satisfy the users�
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=8cm]{images/plots-page.png}
+   \includegraphics[height=12cm]{images/plots-page.png}
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -349,7 +349,7 @@ The Plots page displays a configurable set of data during the selected time fram
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{images/data-log-page.png} % can do short 
+   \includegraphics[height=8cm]{images/data-log-short.png} % can do short 
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -364,28 +364,28 @@ The Data Log page expands on the main summary page’s Exposure Breakdown applet
 
   \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{images/data-log-columns.png}
+   \begin{tabular}{c} %% tabular useful for creating an array of images
+   \includegraphics[height=8cm]{images/data-log-columns-short.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:datalogcols} 
+   { \label{fig:datalogcols}
 The Data Log table invites users to select all columns of metadata associated to the exposures, or only the columns of their interest.}
    \end{figure}
 
      \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{images/data-log-grouped.png}
+   \begin{tabular}{c} %% tabular useful for creating an array of images
+   \includegraphics[height=8cm]{images/data-log-group-short.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:dataloggroup} 
+   { \label{fig:dataloggroup}
 The Data Log table allows grouping based on the data available in any of the selected columns for unique filtering and searching.}
    \end{figure}
-   
+
 \subsection{Context Feed}
 \label{sec:contextfeed}
 
@@ -408,7 +408,7 @@ The Context Feed page is an iteration on this integrated data visualization thro
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{images/context-feed.png}
+   \includegraphics[height=10cm]{images/context-feed.png}
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -424,7 +424,7 @@ The Visit Maps page expands on the main summary page’s Visit Map applet. This 
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{images/visit-map-page.jpg}
+   \includegraphics[height=10cm]{images/visit-map-page.jpg}
    \end{tabular}
    \end{center}
    \caption[example] 
