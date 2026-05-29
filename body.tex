@@ -77,19 +77,8 @@ The Nightly Digest augments these summit-based data sources with almanac data fr
 
 The main page of the Nightly Digest serves as a digest: a condensed and organized summary divided into components (applets) to communicate an overall understanding of how the previous observation night progressed. The Nightly Digest also allows users the flexibility to visualize metrics covering any date range in the past. The sidebar offers users control to choose which telescope’s data to focus on (Simonyi/AuxTel), what observation day (dayobs) range to request data for, and how many nights of data. The sidebar also includes a navigation menu to further detailed pages covered in section ~\ref{sec:addpages}.
 
-  \begin{figure} [ht]
-   \begin{center}
-   \begin{tabular}{cc} %% tabular useful for creating an array of images 
-    \includegraphics[height=12cm]{images/sidebar-calendar.png} &
-    \includegraphics[height=12cm]{images/sidebar.png} 
-   \end{tabular}
-   \end{center}
-   \caption[example] 
-%>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:sidebar} 
-The Nightly Digest Sidebar contains selectable menus for the telescope, night, and number of nights. Below these parameters, the selected observation day is displayed. Further navigation is shown below.}
-   \end{figure}
-   
+
+
 The main summary page includes summary cards and more detailed applets to answer core logging questions given the requested observation day range;
 \begin{enumerate}
 \item\textbf{Volume} - How many exposures were taken during the time frame?
@@ -100,17 +89,31 @@ The main summary page includes summary cards and more detailed applets to answer
 
 Additional pages build upon the summary page by combining data from multiple applets to add nuance, depth, and context to answer these four questions. 
 
-\subsection{The Nightly Digest page}
+  \begin{figure} [ht]
+   \begin{center}
+   \begin{tabular}{cc} %% tabular useful for creating an array of images
+    \includegraphics[height=10cm]{images/sidebar-calendar.png} &
+    \includegraphics[height=10cm]{images/sidebar.png}
+   \end{tabular}
+   \end{center}
+   \caption[example]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+   { \label{fig:sidebar}
+The Nightly Digest Sidebar contains selectable menus for the telescope, night, and number of nights. Below these parameters, the selected observation day is displayed. Further navigation is shown below.}
+   \end{figure}
+
+\FloatBarrier
+   \subsection{The Nightly Digest page}
 
   \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=11cm]{images/nightly-digest-full-page-better.png}
+   \begin{tabular}{c} %% tabular useful for creating an array of images
+   \includegraphics[height=9cm]{images/nightly-digest-full-page-better.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:digest} 
+   { \label{fig:digest}
 The Nightly Digest's main page displays multiple views of metrics both simple and more complex. The applets and cards are arranged to display the data in a maximized browser window but adjust to size and mobile displays.}
    \end{figure}
 
@@ -123,7 +126,7 @@ The rest of the page is broken down into larger displays of data, some combining
   \begin{figure} [ht]
    \begin{center}
    \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=2cm]{images/summary-cards.png}
+   \includegraphics[height=1.8cm]{images/summary-cards.png}
    \end{tabular}
    \end{center}
    \caption[example] 
@@ -144,84 +147,90 @@ Summary cards across the top of the digest display a quick look at the performan
 Click on the Jira ticket card to access a table displaying the specific tickets added and their attributes. Click on a link to access our ticketing system.}
    \end{figure}
 
+
+   \FloatBarrier
 \subsubsection{Observing Conditions}
 
+The Observing Conditions applet communicates the overall quality of the set of exposures during the selected observation day range through a few different measures layered together. Using exposure metadata from ConsDB and almanac information, this applet displays a timeline of the exposures taken represented as their values of PSF FWHM and a separate data point corresponding to the magnitude of their zero points categorized by what filter was used for the exposure. This data interactively comes alive by mousing over the filter legend as the plot displays only the data points from the filter the cursor selects.
 
-  \begin{figure} [ht]
+We are also able to see gaps in exposures highlighted in this chronological representation. The user can zoom in on a selected portion of the plot to see a subset of data and hover over any of the data points to display highlighted attributes for each exposure. This applet communicates the time distribution of exposures taken and their overall quality throughout the night. Users can evaluate many observatory qualities from this combined information including cloud cover, the thermal conditions of the atmosphere and dome environment, and image quality of the exposures. The interactivity that we provide in this applet connects to both other applets on the page, and the zoom in selection holds when navigating to other pages in the Nightly Digest for further investigation.
+
+\begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \begin{tabular}{c} %% tabular useful for creating an array of images
    \includegraphics[height=8cm]{images/observing-conditions.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:observingconditions} 
+   { \label{fig:observingconditions}
 The Observing Conditions applet displays the zero points and the point spread function (PSF) for exposures taken during the selected time frame. The zero points are color-coded based on which filter was active on the LSSTCam, and gaps between exposures are highlighted in the background as dark green.}
    \end{figure}
-   
-The Observing Conditions applet communicates the overall quality of the set of exposures during the selected observation day range through a few different measures layered together. Using exposure metadata from ConsDB and almanac information, this applet displays a timeline of the exposures taken represented as their values of PSF FWHM and a separate data point corresponding to the magnitude of their zero points categorized by what filter was used for the exposure. This data interactively comes alive by mousing over the filter legend as the plot displays only the data points from the filter the cursor selects.
 
   \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \begin{tabular}{c} %% tabular useful for creating an array of images
    \includegraphics[height=8cm]{images/observing-conditions-focus.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:obscondfocus} 
+   { \label{fig:obscondfocus}
 The Observing Conditions applet shows a dialog box when hovering over any individual data point, displaying further attributes for any exposure.}
    \end{figure}
 
 % we could add the original observing conditions to be side by side with the filtered one
-   
+
   \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \begin{tabular}{c} %% tabular useful for creating an array of images
    \includegraphics[height=8cm]{images/observing-conditions-filter.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:obscondfilter} 
+   { \label{fig:obscondfilter}
 Hover over a specific filter to the bottom right of the observing conditions plot to see only that set of data displayed in the applet.}
    \end{figure}
-   
-We are also able to see gaps in exposures highlighted in this chronological representation. The user can zoom in on a selected portion of the plot to see a subset of data and hover over any of the data points to display highlighted attributes for each exposure. This applet communicates the time distribution of exposures taken and their overall quality throughout the night. Users can evaluate many observatory qualities from this combined information including cloud cover, the thermal conditions of the atmosphere and dome environment, and image quality of the exposures. The interactivity that we provide in this applet connects to both other applets on the page, and the zoom in selection holds when navigating to other pages in the Nightly Digest for further investigation.
-   
 
+
+
+   \FloatBarrier
 \subsubsection{Exposure Breakdown}
+
+
+The Exposure Breakdown applet displays a bar chart of exposure data from ConsDB and allows grouping by selected meaningful categories, including science program, filters, image type. Where these science programs are available in Zephyr Scale, or Jira, they will be linked to their associated ticket or test plan for further investigation. The Exposure Breakdown displays the count or time of exposures taken in each category with different sorting options to highlight what the user may be searching for. This applet also integrates data from the Exposure Log source, highlighting when a portion of any category of exposures has been `flagged’ by the Observing Specialists. Hovering over any category in the Exposure Breakdown applet also connects back to the Observing Conditions applet, further highlighting those exposures taken in the category selected in the breakdown
+
+If the user is interested in the exposures of a particular category, they can click on that bar and be directed to a sorted Data Log page displaying a table of all the exposures taken and filtered by the selected category.
+Users can get a sense of what tests were run and how the visits spanned our science and engineering goals over a night by interacting with the Exposure Breakdown applet.
 
   \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \begin{tabular}{c} %% tabular useful for creating an array of images
    \includegraphics[height=8cm]{images/exposure-breakdown.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
    { \label{fig:expbreakdown}
 The Exposure Breakdown applet distributes the cumulative number or time duration of exposures taken in any number of test case categories, observation reason, target name, image type, or filter. This distribution can be sorted numerically or alphabetically.}
    \end{figure}
 
-The Exposure Breakdown applet displays a bar chart of exposure data from ConsDB and allows grouping by selected meaningful categories, including science program, filters, image type. Where these science programs are available in Zephyr Scale, or Jira, they will be linked to their associated ticket or test plan for further investigation. The Exposure Breakdown displays the count or time of exposures taken in each category with different sorting options to highlight what the user may be searching for. This applet also integrates data from the Exposure Log source, highlighting when a portion of any category of exposures has been ‘flagged’ by the Observing Specialists. Hovering over any category in the Exposure Breakdown applet also connects back to the Observing Conditions applet, further highlighting those exposures taken in the category selected in the breakdown
 
-
-  \begin{figure} [ht]
+   \begin{figure} [ht]
    \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \begin{tabular}{c} %% tabular useful for creating an array of images
    \includegraphics[height=5cm]{images/observing-conditions-breakdown.png}
    \end{tabular}
    \end{center}
-   \caption[example] 
+   \caption[example]
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:obscondbreak} 
+   { \label{fig:obscondbreak}
 The Observing Conditions applet and Exposure Breakdown applet work together through interactivity. Highlight a category in Exposure Breakdown, and only the corresponding exposures are displayed in Observing Conditions. }
    \end{figure}
-   
-If the user is interested in the exposures of a particular category, they can click on that bar and be directed to a sorted Data Log page displaying a table of all the exposures taken and filtered by the selected category.
-Users can get a sense of what tests were run and how the visits spanned our science and engineering goals over a night by interacting with the Exposure Breakdown applet.
 
+
+   \FloatBarrier
 \subsubsection{Night Report}
 
 The Night Report applet is the most narrative driven visual on the main page. This applet queries data from the Night Log to represent the summary the Observing Specialists write at the end of the observation day. The report contains a summary, weather conditions, a detailed report, and a list of Observing Specialists and other staff who participated in the summit operations directly, usually in person. When multiple days are selected, users can navigate each observation day via a drop down menu, or scroll continuously through the summaries. This high level summary of the events during each observation day is presented to connect the numerical data presented elsewhere on the page and add context to which tests were run, what anomalies were encountered, and give deeper understanding to how the volume and quality of exposures ties to the way the available observing time was spent. This Night Report summarizes written logging from the Narrative Log which is available in the Context Feed Page described in ~\ref{sec:contextfeed}.
