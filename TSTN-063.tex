@@ -12,6 +12,7 @@
 \usepackage{longtable}
 \usepackage{placeins}
 \usepackage{authblk}
+\usepackage{xspace}                     % used by \rhl
 
 % Local commands go here.
 \newcommand{\aj}{AJ}
@@ -25,6 +26,12 @@
 % Package imports go here.
 
 % Local commands go here.
+
+\NewDocumentCommand{\rhl}{m o}{%
+  % E.g.  \rhl{Thanks}[whom should I thank?]
+  %
+  \unskip\space\textbf{RHL: #1\IfValueT{#2}{\qquad\textit{Valerie: #2}}}\xspace
+  }
 
 % See ASPmanual2010.pdf 2.1.4  and ManuscriptInstructions.pdf for more details
 %\markboth{auth}{short title}
