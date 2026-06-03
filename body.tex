@@ -2,7 +2,7 @@
 \label{sec:intro}  % \label{} allows reference to this section
 
 As the Vera C. Rubin Observatory moves toward executing the ten-year Legacy Survey of Space
-and Time (LSST)\cite{Ivezic19}, multiple teams within the observatory have been working towards
+and Time (LSST)\cite{2019ApJ...873..111I}, multiple teams within the observatory have been working towards
 formalizing the logging processes ahead of operations. Multiple teams within Rubin Observatory
 have been working towards formalizing the logging processes ahead of operations.
 These efforts have been characterized by the Observatory
@@ -563,7 +563,7 @@ attributes and metadata provided from ConsDB.}
 \subsection{Data Log}
 
 The Data Log page [Fig ~\ref{fig:datalog}] expands on the main summary page’s 
-Exposure Breakdown applet [Fig ~\ref{fig:exposurebreakdown}]
+Exposure Breakdown applet [Fig ~\ref{fig:expbreakdown}]
 by providing a table of all exposures within the selected observation day range. The columns
 display exposure metadata from ConsDB and comments from the Exposure Log associated with
 each exposure. This table is scrollable and the visible columns can be selected [Fig ~\ref{fig:datalogcols}]
@@ -621,7 +621,7 @@ understanding of the Observing Specialists' activities over the course of an obs
 The Context Feed page [Fig ~\ref{fig:contextfeed}] is an iteration on this integrated data visualization through
 development collaboration with the survey scheduler team. This page expands on the
 Observing Specialists’ written summary in the Night Report applet [Fig ~\ref{fig:nightreport}] and the Time Accounting
-applet [Fig ~\ref{fig:timeaccounting}], to add detail to events that occurred during the available observing time and
+applet [Fig ~\ref{fig:timeacc}], to add detail to events that occurred during the available observing time and
 elaborate on what was happening during different categories shown in the Time Accounting
 applet. The Context Feed takes telemetric data from the EFD to include scripts, faults,
 and exposures and displays these chronologically with written log messages from the
@@ -661,7 +661,7 @@ Both projections work together; as the user slides the time control through the
 available time range, the visits populate on both maps simultaneously. The data
 populating these plots is accessed via ConsDB and added by our almanac data. These
 detailed projections show additional data to contextualize the Visit Map data being
-shown: the planned final depth of LSST survey\cite{Ivezic19}, the moon and sun coordinates, the
+shown: the planned final depth of LSST survey\cite{2019ApJ...873..111I}, the moon and sun coordinates, the
 ecliptic, the plane of the Milky Way, the horizon, and the zenith distance of 70
 degrees.
 
@@ -689,7 +689,7 @@ with input from Observing Specialists. This new control system feature has been
 integrated with the Observing Specialists’ interface LOVE and the scheduling
 component of the control software. With this new telemetry data collected from the EFD
  the Nightly Digest will improve the way we report and visualize our
- Time Accounting applet [Fig ~\ref{fig:timeacc}], Time Loss card [Fig ~\ref{fig:timeloss}],
+ Time Accounting applet [Fig ~\ref{fig:timeacc}], Time Loss card,
  and our in-development Time Loss page. This information will be automatically time
  based and serves as another use of a timeline, specifically that users would like to see on our main summary page.
 
