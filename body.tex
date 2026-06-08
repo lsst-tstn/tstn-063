@@ -237,7 +237,7 @@ cards: Nighttime Exposures, Open Shutter Efficiency, Time Loss, and Jira Tickets
 The \textbf{Nighttime Exposures} card displays the number of exposures, queried from ConsDB, that were
 taken on-sky, with the observatory dome open. This card also indicates the number of
 expected exposures calculated from daily Feature Based Scheduler (FBS) simulations to
-predict how many exposures could be taken each night \cite{Naghib19, RTN-016}.
+predict how many exposures could be taken each night \cite{Jones2026Scheduler, peter_yoachim_2026_20570788, Naghib19, RTN-016}.
 \textbf{Open Shutter Efficiency} builds on the number of exposures taken to aggregate
 total time exposing on-sky and compares this to the time available, subtracting out any
 time impacted by weather. The \textbf{Time Loss} card collects the time loss reported from the
@@ -411,7 +411,7 @@ dome was closed during the night. We calculate fault time taking into account ga
 overhead, total exposing time and comparing with total available observing time based on
 almanac and weather information. These categories are either calculated internally or
 gathered using the survey scheduling team’s software package \texttt{rubin\_nights} to
-add slew and overhead detail to exposure data from ConsDB\cite{RTN-016}.
+add slew and overhead detail to exposure data from ConsDB\cite{Jones2026Scheduler, RTN-016}.
 We also use time based data from the EFD including when the observatory dome opens and closes.
 
   \begin{figure} [ht]
@@ -454,11 +454,12 @@ Here we see a model of the cumulative time in various states and when the states
 \FloatBarrier
 \subsubsection{Visit Map}
 
-The Visit Map applet [Fig ~\ref{fig:vma}] shows an interactive planispheric projection of a full observation
+The Visit Map applet [Fig ~\ref{fig:vma}] shows an interactive Lambert azimuthal equal area projection of a full observation
 day’s visits\footnote[1]{We use ‘visit’ and ‘exposure’ to refer to the same piece of data.
 Rubin Observatory once considered multiple shorter exposures to compose one visit, but
-currently they share a one to one relationship.}. We get this RA and Dec data from ConsDB
-for each exposure. This data is augmented with almanac data to display environmental
+currently they share a one to one relationship.}, with controls that let it simulate a planisphere.
+We get this RA and Dec data from ConsDB for each exposure.
+This data is augmented with almanac data to display environmental
 information relative to visit locations. The user can scroll this display over many nights
 adjacent to the currently selected observation day or range to see the pattern of where
 the observatory is exposing on the sky. This applet communicates what type of activities
@@ -470,7 +471,7 @@ exposed, and they can understand further context including how the exposures sho
 other applets was distributed across the sky for that period. This data visualization is
 expanded upon in a Visit Map page~\ref{sec:vmp} and is a result of our inspiration from and
 collaboration with the survey scheduling team who has been a great help in our development
-and integration of this plot \cite{RTN-016}.
+and integration of this plot \cite{Jones2026Scheduler, RTN-016}.
 
   \begin{figure} [ht]
    \begin{center}
@@ -664,7 +665,8 @@ The Visit Maps page [Fig ~\ref{fig:vmp}] expands on the main summary page’s Vi
 to give a larger and more detailed view of the visits taken during the selected observation day range.
 This visualization was a result of our cross disciplinary work with the survey scheduler team who creates these maps to
 evaluate survey progress. With their help, we offer a larger view of the visits on a
-planispheric projection and is also visualized with an armillary projection adjacent.
+azimuthal projection (with controls to simulate a planisphere) and is also visualized with an
+orthographic projection adjacent (with controls to simulate an armillary sphere).
 Both projections work together; as the user slides the time control through the
 available time range, the visits populate on both maps simultaneously. The data
 populating these plots is accessed via ConsDB and added by our almanac data. These
@@ -696,10 +698,10 @@ One major feature in development is the automation of a unified Observatory Stat
 with input from Observing Specialists. This new control system feature has been
 integrated with the Observing Specialists’ interface LOVE and the scheduling
 component of the control software. With this new telemetry data collected from the EFD
- the Nightly Digest will improve the way we report and visualize our
- Time Accounting applet [Fig ~\ref{fig:timeacc}], Time Loss card,
- and our in-development Time Loss page. This information will be automatically time
- based and serves as another use of a timeline, specifically that users would like to see on our main summary page.
+the Nightly Digest will improve the way we report and visualize our
+Time Accounting applet [Fig ~\ref{fig:timeacc}], Time Loss card,
+and our in-development Time Loss page. This information will be automatically time
+based and serves as another use of a timeline, specifically that users would like to see on our main summary page.
 
 Timelines have become increasingly popular with our users and we continue to arrange
 our visualizations to include them in more pages that would leverage a timeline-based display,
