@@ -1,11 +1,17 @@
+% Include a list of keywords after the abstract
+\keywords{Vera C. Rubin Observatory,
+Observatory Operations,
+Performance Metrics,
+Dashboard User Interface,
+Operations Monitoring,
+Nightly Performance}
+
 \section{INTRODUCTION}
 \label{sec:intro}  % \label{} allows reference to this section
 
 As the Vera C. Rubin Observatory moves toward executing the ten-year Legacy Survey of Space
 and Time (LSST)\cite{2019ApJ...873..111I}, multiple teams within the observatory have been working towards
-formalizing the logging processes ahead of operations. Multiple teams within Rubin Observatory
-have been working towards formalizing the logging processes ahead of operations.
-These efforts have been characterized by the Observatory
+formalizing the logging processes ahead of operations. These efforts have been characterized by the Observatory
 Electronic Logging group of 2020, and further built upon by the Telescope and Site
 software team in recent years. Multiple tools and workflows were created and integrated
 into existing applications at the observatory to automate the creation and exploration of
@@ -46,15 +52,15 @@ developed bespoke logging metrics and platforms to monitor the performance of th
 at the observatory.
 
 The observers had a view into each of the systems through the LSST Observer Visual
-Environment (LOVE) as well as view their written logging through OLE\cite{Aranda26}. The
-Telescope and Site software team had a view into the observatory control system and how
-each component was running through their own logs. Sub-system owners had unique
+Environment (LOVE) as well as a view their written logging through OLE\cite{Aranda26}. The
+Telescope and Site software team had a view into the Observatory Control System (OCS) and how
+each component was running through each application's logs. Sub-system owners had unique
 chronograf dashboards (web application to visualize and query data from an InfluxDB instance)
-measuring logs and telemetry from their systems, and people working offsite-outside of the summit created
-interactive Jupyter notebooks run in Times Square in the Rubin Science Platform (RSP). Each technical group
-had a slightly different focus and measure for how a ‘good night’ goes, and monitored
-different slack channels, created their own daily/weekly/monthly summary reports, or used a
-mixture of all the methods above.
+measuring logs and telemetry for their systems. Remote staff working off the summit created
+interactive Jupyter Notebooks run in Times Square in the Rubin Science Platform (RSP).
+Each technical group had a slightly different focus and measurement of success,
+created their own daily/weekly/monthly summary reports, and monitored different slack channels,
+or used a mixture of all the methods above to evaluate observing performance.
 
 Notable monitoring and logging systems had been created and widely used by summit staff to
 this point, namely ROLEX (Rubin Observatory Log EXplorer) and RubinTV. ROLEX was a tool to
@@ -75,9 +81,9 @@ previous logging working group. This initiated us to create a system with “the
 exchanging information between the different technical teams and operations departments
 during the commissioning and the operation of the observatory”\cite{LSE-490}. To get a
 feel for the data landscape, demonstrate a clear prototype, and understand our
-stakeholders use cases, the logging team created an interactive jupyter notebook running
+stakeholders use cases, the logging team created an interactive Jupyter Notebook running
 within the RSP notebook aspect as our minimum viable product (MVP).
-We hosted this MVP within the RSP’s Times Square, a service to publish jupyter notebooks
+We hosted this MVP within the RSP’s Times Square, a service to publish Jupyter Notebooks
 with project and data rights holders\cite{SQR-062}.
 
 This MVP allowed the logging team to become familiar with these disparate logging data
@@ -135,9 +141,9 @@ pipelines. Initial scientific measurements regarding exposures are accessed via 
 \subsubsection{Human-Driven Data Sources}
 
 Humans are a critical component of our observatory system, and this is clearly
-demonstrated in the narrative and interactions from our Observing Specialist team. The
+demonstrated in the Observing Specialist driven data sources. The
 Observing Specialists contribute to three key written data sources which the Nightly
-Digest injects: the \textbf{Exposure Log}, the \textbf{Narrative Log}, and the \textbf{Night Log}
+Digest ingests: the \textbf{Exposure Log}, the \textbf{Narrative Log}, and the \textbf{Night Log}
 \cite{Aranda26}. The \textbf{Exposure Log} provides a list of exposures, but is distinct from ConsDB in
 that it stores a flag and a message for certain exposures where this commentary is
 available. Exposures rarely have annotations, but collecting these notes alongside
@@ -187,10 +193,9 @@ system performance team.
 The main page of the Nightly Digest serves as a digest: a condensed and organized summary
 divided into components (applets) to communicate an overall understanding of how the
 previous observation night, or range of nights, progressed. The sidebar offers
-users control to choose which telescope (Simonyi/AuxTel) to focus on,
-what observation day (dayobs) range to request data for, and how many
-nights of data. The sidebar [Fig ~\ref{fig:sidebar}] also includes a navigation menu to further detailed pages
-covered in section  ~\ref{sec:addpages}.
+users control to choose which telescope (Simonyi/AuxTel) to focus on, what range of
+observation days (dayobs) to request data for. The sidebar [Fig~\ref{fig:sidebar}]
+also includes a navigation menu to further detailed pages covered in section~\ref{sec:addpages}.
 
 The main summary page includes both summary cards and more detailed applets to answer core
 logging questions given the requested observation day range;
@@ -218,18 +223,18 @@ add nuance, depth, and context to answer these four questions.
    { \label{fig:sidebar}
 The Nightly Digest Sidebar contains selectable menus for telescope, night, and number
 of nights. Below these parameters, the selected observation day is displayed.
-Navigation to ~\ref{sec:addpages} is shown below.}
+Navigation to~\ref{sec:addpages} is shown below.}
    \end{figure}
 
 \FloatBarrier
    \subsection{The Nightly Digest page}
 
-Across the top of the Nightly Digest [Fig ~\ref{fig:digest}], we display four summary
+Across the top of the Nightly Digest [Fig~\ref{fig:digest}], we display four summary
 cards: Nighttime Exposures, Open Shutter Efficiency, Time Loss, and Jira Tickets.
 The \textbf{Nighttime Exposures} card displays the number of exposures, queried from ConsDB, that were
 taken on-sky, with the observatory dome open. This card also indicates the number of
 expected exposures calculated from daily Feature Based Scheduler (FBS) simulations to
-predict how many exposures could be taken each night \cite{Naghib19, RTN-016}.
+predict how many exposures could be taken each night \cite{Jones2026Scheduler, peter_yoachim_2026_20570788, Naghib19, RTN-016}.
 \textbf{Open Shutter Efficiency} builds on the number of exposures taken to aggregate
 total time exposing on-sky and compares this to the time available, subtracting out any
 time impacted by weather. The \textbf{Time Loss} card collects the time loss reported from the
@@ -279,10 +284,11 @@ their attributes. Click on a link to access our ticketing system.}
    \FloatBarrier
 \subsubsection{Observing Conditions}
 
-The Observing Conditions applet [Fig ~\ref{fig:observingconditions}] communicates the overall quality of the set of exposures
+The Observing Conditions applet [Fig~\ref{fig:observingconditions}] communicates the overall quality of the set of exposures
 during the selected observation day range through a few different measures layered
 together. Using exposure metadata from ConsDB and almanac information, this applet
-displays a timeline of the exposures taken represented as their values of PSF FWHM and a
+displays a timeline of the exposures taken represented as their values of
+PSF FWHM (Point Spread Function Full Width at Half-Maximum) and a
 separate data point corresponding to the magnitude of their zero points categorized by
 what filter was used for the exposure. This data interactively comes alive by mousing over
 the filter legend as the plot displays only the data points from the filter the cursor
@@ -293,8 +299,8 @@ in on a selected portion of the plot to see a subset of data and hover over any 
 highlighted attributes for each exposure. This applet communicates the time distribution of exposures taken and
 their measured qualities throughout the night. Users can infer observatory qualities from this combined
 information including photometric depth and image quality. The interactivity
-that we provide in this applet connects to both other applets on the page [Fig ~\ref{fig:obscondbreak}], and the zoom in selection holds when
-navigating to other pages in the Nightly Digest for further investigation.
+that we provide in this applet connects to another applet on the page [Fig~\ref{fig:obscondbreak}],
+and the zoomed-in selection persists when navigating to other pages in the Nightly Digest for further investigation.
 
 \begin{figure} [ht]
    \begin{center}
@@ -327,8 +333,8 @@ bottom right of the observing conditions plot to see only that set of data displ
    \FloatBarrier
 \subsubsection{Exposure Breakdown}
 
-The Exposure Breakdown applet [Fig ~\ref{fig:expbreakdown}] displays a horizontal bar chart that distributes the cumulative number
-or time duration of exposures taken in any number of test case categories, observation reason,
+The Exposure Breakdown applet [Fig~\ref{fig:expbreakdown}] displays a horizontal bar chart that distributes the cumulative number
+or time duration of exposures taken in any number of Science Program categories, observation reason,
 target name, image type, or filter. This distribution can be sorted numerically or alphabetically.
 If the user is interested in the exposures of a particular category, they can click on
 that bar to navigate to a sorted Data Log page, filtering the exposure table to reveal
@@ -343,7 +349,7 @@ exactly how the night's visits spanned our science and engineering goals.
    \caption[example]
    { \label{fig:expbreakdown}
 The Exposure Breakdown applet distributes the cumulative number or time duration of
-exposures taken in any number of test case categories, observation reason, target name,
+exposures taken in any number of Science Program categories, observation reason, target name,
 image type, or filter. This distribution can be sorted numerically or alphabetically.}
    \end{figure}
 
@@ -365,7 +371,7 @@ exposures are displayed in Observing Conditions. }
    \FloatBarrier
 \subsubsection{Night Report}
 
-The Night Report applet [Fig ~\ref{fig:nightreport}] is the most narrative driven visual on the main page. This applet
+The Night Report applet [Fig~\ref{fig:nightreport}] is the most narrative driven visual on the main page. This applet
 queries data from the Night Log to represent the summary the Observing Specialists write
 at the end of the observation day. The report contains a summary, weather conditions, a
 detailed report, and a list of Observing Specialists and other staff who participated in
@@ -390,7 +396,7 @@ weather conditions and scrolls when multiple observing days are selected.}
 
 \subsubsection{Time Accounting}
 
-The Time Accounting applet [Fig ~\ref{fig:timeacc}] is an evolving visualization to inform observatory metrics that
+The Time Accounting applet [Fig~\ref{fig:timeacc}] is an evolving visualization to inform observatory metrics that
 describe how the off-shutter time (when the camera is not actively exposing on the sky) is
 used. It is critical to see how efficient the system is at taking observations, and to
 enable different technical teams to dive into the time spent not observing.
@@ -403,7 +409,7 @@ dome was closed during the night. We calculate fault time taking into account ga
 overhead, total exposing time and comparing with total available observing time based on
 almanac and weather information. These categories are either calculated internally or
 gathered using the survey scheduling team’s software package \texttt{rubin\_nights} to
-add slew and overhead detail to exposure data from ConsDB\cite{RTN-016}.
+add slew and overhead detail to exposure data from ConsDB\cite{rubin_nights, Jones2026Scheduler, RTN-016}.
 We also use time based data from the EFD including when the observatory dome opens and closes.
 
   \begin{figure} [ht]
@@ -426,7 +432,7 @@ of exposures taken.
 
 Our current iteration of the Time Accounting applet will soon be replaced to represent
 further automated systems and information about observatory status as a whole, calculated
-outside of the Nightly Digest [Fig ~\ref{fig:obsstatus}].
+outside of the Nightly Digest [Fig~\ref{fig:obsstatus}].
 
 \begin{figure} [ht]
    \begin{center}
@@ -446,11 +452,12 @@ Here we see a model of the cumulative time in various states and when the states
 \FloatBarrier
 \subsubsection{Visit Map}
 
-The Visit Map applet [Fig ~\ref{fig:vma}] shows an interactive planispheric projection of a full observation
+The Visit Map applet [Fig~\ref{fig:vma}] shows an interactive Lambert azimuthal equal area projection of a full observation
 day’s visits\footnote[1]{We use ‘visit’ and ‘exposure’ to refer to the same piece of data.
 Rubin Observatory once considered multiple shorter exposures to compose one visit, but
-currently they share a one to one relationship.}. We get this RA and Dec data from ConsDB
-for each exposure. This data is augmented with almanac data to display environmental
+currently they share a one-to-one relationship.}, with controls that let it simulate a planisphere.
+We get this RA and Dec data from ConsDB for each exposure.
+This data is augmented with almanac data to display environmental
 information relative to visit locations. The user can scroll this display over many nights
 adjacent to the currently selected observation day or range to see the pattern of where
 the observatory is exposing on the sky. This applet communicates what type of activities
@@ -459,10 +466,10 @@ observations, while survey-like activities will sweep across an area filling it 
 Visit Map is highly detailed, including markers for the moon, sun, ecliptic, plane of the
 milky way and other labels. From this applet, users learn if their area of interest was
 exposed, and they can understand further context including how the exposures shown in
-other applets was distributed across the sky for that period. This data visualization is
+other applets were distributed across the sky for that period. This data visualization is
 expanded upon in a Visit Map page~\ref{sec:vmp} and is a result of our inspiration from and
 collaboration with the survey scheduling team who has been a great help in our development
-and integration of this plot \cite{RTN-016}.
+and integration of this plot \cite{Jones2026Scheduler, RTN-016}.
 
   \begin{figure} [ht]
    \begin{center}
@@ -481,7 +488,7 @@ applet is interactive as one can scroll through time.}
 \section{Supporting Pages}
 \label{sec:addpages}
 
-While the Nightly Digest’s main summary page [Fig ~\ref{fig:digest}] was our initial focus, we have found that
+While the Nightly Digest’s main summary page [Fig~\ref{fig:digest}] was our initial focus, we have found that
 additional pages support our use cases of debugging and adding context. These pages tie
 into our core questions~\ref{sec:corequestions} and expand upon our summary page applets while adding complexity
 and depth to the information provided.
@@ -489,10 +496,10 @@ and depth to the information provided.
 One theme of logging that continues through each of these pages is our shared
 chronological understanding of data. This is represented in three of the four additional
 pages via a timeline UI component, and in the fourth as a slider through time. Initially
-in the Context Feed page [Fig ~\ref{fig:cftimeline}], our timeline component [Fig ~\ref{fig:timeline}]
+in the Context Feed page [Fig~\ref{fig:cftimeline}], our timeline component [Fig~\ref{fig:timeline}]
 displays a horizontal area marking events as vertical lines from left to right. Each of our timelines
 has a pink selection area so users may modify the time selected and displayed in the data pages to span multiple
-observation days, partial selections across multiple days [Fig ~\ref{fig:timelinemulti}],
+observation days, partial selections across multiple days [Fig~\ref{fig:timelinemulti}],
 to even a single exposure or event.
 
   \begin{figure} [ht]
@@ -537,13 +544,13 @@ exposures, script errors, and observer narrative messages.}
    \FloatBarrier
 \subsection{Plots}
 
-The Plots page [Fig ~\ref{fig:plots}] expands on the Observing Conditions applet [Fig ~\ref{fig:observingconditions}]
+The Plots page [Fig~\ref{fig:plots}] expands on the Observing Conditions applet [Fig~\ref{fig:observingconditions}]
 to satisfy the users’ desires to easily access exposure metadata and trends across the
 selected observation day range. This page displays numerous pre-created plots from
 many exposure attributes in ConsDB, and by default displays airmass, PSF FWHM, photometric zero points, and sky brightness.
 The user may also select a portion of any plot to zoom in on, and the additional plots
 displayed synchronously adjust to that new time period. For more complex plotting and data exploration,
-users are encouraged to use a jupyter notebook in the RSP
+users are encouraged to use a Jupyter Notebook in the RSP
 where they can query the same data sources and create custom plots with more freedom and flexibility.
 
   \begin{figure} [ht]
@@ -562,12 +569,12 @@ attributes and metadata provided from ConsDB.}
 \FloatBarrier
 \subsection{Data Log}
 
-The Data Log page [Fig ~\ref{fig:datalog}] expands on the main summary page’s 
-Exposure Breakdown applet [Fig ~\ref{fig:expbreakdown}]
+The Data Log page [Fig~\ref{fig:datalog}] expands on the main summary page’s 
+Exposure Breakdown applet [Fig~\ref{fig:expbreakdown}]
 by providing a table of all exposures within the selected observation day range. The columns
 display exposure metadata from ConsDB and comments from the Exposure Log associated with
-each exposure. This table is scrollable and the visible columns can be selected [Fig ~\ref{fig:datalogcols}]
-and defined by the user. Any column may also be sorted or grouped by the available values [Fig ~\ref{fig:dataloggroup}] for
+each exposure. This table is scrollable and the visible columns can be selected [Fig~\ref{fig:datalogcols}]
+and defined by the user. Any column may also be sorted or grouped by the available values [Fig~\ref{fig:dataloggroup}] for
 each attribute, allowing users to categorize data to understand groupings of exposures
 according to their area of focus.
 
@@ -618,10 +625,10 @@ telemetric and narrative data for observatory specialists and commissioning scie
 viewing Narrative Log entries alongside script configurations and errors, users gain a clear
 understanding of the Observing Specialists' activities over the course of an observation day.
 
-The Context Feed page [Fig ~\ref{fig:contextfeed}] is an iteration on this integrated data visualization through
+The Context Feed page [Fig~\ref{fig:contextfeed}] is an iteration on this integrated data visualization through
 development collaboration with the survey scheduler team. This page expands on the
-Observing Specialists’ written summary in the Night Report applet [Fig ~\ref{fig:nightreport}] and the Time Accounting
-applet [Fig ~\ref{fig:timeacc}], to add detail to events that occurred during the available observing time and
+Observing Specialists’ written summary in the Night Report applet [Fig~\ref{fig:nightreport}] and the Time Accounting
+applet [Fig~\ref{fig:timeacc}], to add detail to events that occurred during the available observing time and
 elaborate on what was happening during different categories shown in the Time Accounting
 applet. The Context Feed takes telemetric data from the EFD to include scripts, faults,
 and exposures and displays these chronologically with written log messages from the
@@ -652,14 +659,15 @@ script configurations, messages, and telemetric timestamps.}
 \subsection{Visit Maps}
 \label{sec:vmp}
 
-The Visit Maps page [Fig ~\ref{fig:vmp}] expands on the main summary page’s Visit Map applet [Fig ~\ref{fig:vma}]
+The Visit Maps page [Fig~\ref{fig:vmp}] expands on the main summary page’s Visit Map applet [Fig~\ref{fig:vma}]
 to give a larger and more detailed view of the visits taken during the selected observation day range.
 This visualization was a result of our cross disciplinary work with the survey scheduler team who creates these maps to
-evaluate survey progress. With their help, we offer a larger view of the visits on a
-planispheric projection and is also visualized with an armillary projection adjacent.
+evaluate survey progress. With their help, we offer a larger view of the visits on an
+azimuthal projection (with controls to simulate a planisphere) and is also visualized with an
+orthographic projection adjacent (with controls to simulate an armillary sphere).
 Both projections work together; as the user slides the time control through the
 available time range, the visits populate on both maps simultaneously. The data
-populating these plots is accessed via ConsDB and added by our almanac data. These
+populating these plots is accessed via ConsDB and augmented with almanac data. These
 detailed projections show additional data to contextualize the Visit Map data being
 shown: the planned final depth of LSST survey\cite{2019ApJ...873..111I}, the moon and sun coordinates, the
 ecliptic, the plane of the Milky Way, the horizon, and the zenith distance of 70
@@ -686,18 +694,18 @@ Specialists, summit support staff, and project scientists to understand their
 evolving needs as Rubin Observatory moves through commissioning and into operations.
 One major feature in development is the automation of a unified Observatory Status,
 with input from Observing Specialists. This new control system feature has been
-integrated with the Observing Specialists’ interface LOVE and the scheduling
+integrated with the Observing Specialists’ interface, LOVE, and the scheduling
 component of the control software. With this new telemetry data collected from the EFD
- the Nightly Digest will improve the way we report and visualize our
- Time Accounting applet [Fig ~\ref{fig:timeacc}], Time Loss card,
- and our in-development Time Loss page. This information will be automatically time
- based and serves as another use of a timeline, specifically that users would like to see on our main summary page.
+the Nightly Digest will improve the way we report and visualize our
+Time Accounting applet [Fig~\ref{fig:timeacc}], Time Loss card,
+and our in-development Time Loss page. This information will be automatically time
+based and serves as another effective use of a timeline.
 
 Timelines have become increasingly popular with our users and we continue to arrange
-our visualizations to include them in more pages that would leverage a timeline-based display,
+our visualizations to include them in more pages that can leverage a timeline-based display,
 as they have recently been added to our Data Log page. We continue to solicit feedback from
 our user base and work to integrate and unify the different logging tools that each team uses,
-so that Nightly Digest may become a launching pad towards more detailed debugging tools.
+so that the Nightly Digest may be used as a launching pad towards more detailed debugging tools.
 A prominent upcoming priority is the implementation of automated report generation built
 directly from the metrics summarized within the dashboard. Developing a minimum useful
 product for these operational reports will allow technical leads and stakeholders to
@@ -718,8 +726,8 @@ adapt elements of the dashboard for wider community access.
    \end{center}
    \caption[example]
    { \label{fig:drawtimeline}
-Hand drawn designs for Observatory Status timeline and applet to show the design process
-and many ideas are developed while only some make it into the application.}
+Hand-drawn designs for Observatory Status timeline and applet to show the design process;
+many ideas are developed while only some make it into the application.}
    \end{figure}
 
      \begin{figure} [ht]
